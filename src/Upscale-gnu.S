@@ -43,8 +43,8 @@ start:
 
 	stmfd			sp!,						{r4-r12,lr}				@ backing up all registers
 
-	ldr				out_width,					[sp,#(offset + 1*4)]
-    ldr				out_height,					[sp,#(offset + 2*4)]
+	ldr				out_width,					[sp,#(offset)]
+    ldr				out_height,					[sp,#(offset + 1*4)]
 
 	@Input kernel is 4x4
     lsr             rem_height,                 inp_height,#2
@@ -234,6 +234,8 @@ vmovn.u16       d10,                         q12
  vmovn.u16       d29,                        q12
 
   # final 6x6 - d1,d30,d2,d31,d3,d29
+
+
 
   vst1.u8         d1,                         [row_outimage]
   add             row_outimage,                out_width
